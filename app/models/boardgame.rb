@@ -5,8 +5,6 @@ class Boardgame < ApplicationRecord
     has_many :users, through: :user_reviews
     has_many :users, through: :user_boardgames
 
-    def home
-        
-    end
+
 
 end
