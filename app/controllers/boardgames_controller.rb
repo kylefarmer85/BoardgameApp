@@ -9,7 +9,6 @@ class BoardgamesController < ApplicationController
     end
 
     def show
-        byebug
         @boardgame = Boardgame.find(params[:id])
         @desc = @boardgame.description
     end

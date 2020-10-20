@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to user_boardgame_path(current_user)
         else
             flash[:errors] = @user.errors.full_messages
             redirect_to new_user_path
