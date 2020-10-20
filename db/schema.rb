@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_10_20_122125) do
 
   create_table "boardgame_categories", force: :cascade do |t|
-    t.string "boardgame_id"
-    t.string "category_id"
+    t.integer "boardgame_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_122125) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "cat_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

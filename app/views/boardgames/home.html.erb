@@ -1,4 +1,4 @@
-<h1>Welcome to your Social Boardgame Experience</h1>
+<h1 class="title">Welcome to your Social Boardgame Experience</h1>
 
 <h2>Search Boardgame Titles</h2>
 <%= form_tag(boardgames_path method: :get) do %>
@@ -15,7 +15,7 @@
 <ul>
 <h3>All Boardgames</h2>
 <% @boardgames.each do |b| %>
-<li><%= link_to b.name, boardgame_path(b) %></li>
+<li><%= link_to b.name, b %></li>
 <% end %>
 </ul>
 

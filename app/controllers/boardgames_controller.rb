@@ -9,7 +9,7 @@ class BoardgamesController < ApplicationController
     end
 
     def show
-        @boardgame = Boardgame.find_by(params[:id])
+        @boardgame = Boardgame.find(params[:id])
         @desc = @boardgame.description
     end
 
