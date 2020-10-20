@@ -1,4 +1,3 @@
-require 'byebug'
 
 def api_response(url, key)
     response = RestClient.get(url)
@@ -26,7 +25,7 @@ def find_or_create_boardgame_from_first_letter(letter)
             @boardgame = Boardgame.create(name: name, description: description, min_players: min_players, max_players: max_players, year_published: year_published, image_url: image_url)
 
                 create_boardgame_category_association
-            
+
 
             #for each category associate it with the game
             #creates boardgame it doesn't already exist
@@ -52,12 +51,6 @@ def find_or_create_boardgame_from_first_letter(letter)
 
         end
     end
-
-
-
-    # def category_create(categories_hash)
-    #     if categories_hash
-    #         Category.find_or_create_by
 
 create_categories
 
