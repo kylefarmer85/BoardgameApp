@@ -1,9 +1,13 @@
 <h3>User Login</h3>
 
-<%= form_tag '/login' do |f| %>
-  Username: <%= text_field_tag :username %>
-  Password: <%= password_field_tag :password %>
+<%= form_for @user, url: login_path, method: :post do |f| %>
+  Username: <%= f.text_field :username %>
+  Password: <%= f.password_field :password %>
   <%= submit_tag "Login" %><br><br>
 <% end %>
 
- <%= button_to "Signup", new_user_path, method: "get"%><br>
+<%= button_to "Signup", new_user_path, method: "get"%><br>
+
+<% if flash[:error] %>
+  <p style="color: red"><%= flash[:error] %></p><br><br>
+  <% end %>
