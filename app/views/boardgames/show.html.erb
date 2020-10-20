@@ -4,19 +4,38 @@
 <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
 <h4>Year Published: <%= @boardgame.year_published %></h4>
 
-
 <%= @desc %>
-<br>
+<br><br>
+<%= form_tag user_boardgames_path do %>
+  <%= hidden_field_tag :boardgame_id, @boardgame.id%>
+  <%= submit_tag "Add Game to User Collection" %>
+<% end %><br>
 <ol>
+
+<% if @boardgame.avg_rating != nil %>
+<strong>Average User Rating: <%= @boardgame.avg_rating %><br><br></strong>
+<% end %>
+
 <% @boardgame.user_reviews.each do |r| %>
-<li>Review: <%= r.review %><br>Rating: <%= r.rating %></li>
+<li>Review: <%= r.review %><br>
+    Rating: <%= r.rating %></li>
+    Submitted By: <%= r.user.full_name %><br><br>
 <% end %>
 </ol>
 
-<%= form_tag user_boardgames_path do %>
-  <%= hidden_field_tag :boardgame_id, @boardgame.id%>
-  <%= submit_tag %>
+<% if current_user %>
+  <%= form_tag user_reviews_path do %>
+    <%= label_tag "Write a Review:" %><br>
+    <%= text_area_tag :review %><br><br>
+    <%= label_tag "Rating:" %>
+    <%= number_field_tag :rating, nil, :in => 1..10 %><br><br>
+    <%= submit_tag "Submit Review" %>
+    <%= hidden_field_tag :boardgame_id, @boardgame.id%>
+  <% end %>
 <% end %>
+
+
+
 
 
 
