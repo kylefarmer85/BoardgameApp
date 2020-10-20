@@ -1,20 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require_relative '../config/environment'
 
 def api_response(url, key)
-    response_string = RestClient.get(url)
-    JSON.parse(response_string)[key]
+    response = RestClient.get(url)
+    JSON.parse(response)[key]
     # creates array of hashes from key in API
 end
 
 def find_or_create_boardgame_from_first_letter(letter)
-    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[#{letter}]&fields=name,description,category,min_players,max_players,year_published,image_url&limit=15&pretty=true&client_id=28dZcLNq5b/json", "games")
+    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[a]&fields=name,description,min_players,max_players,year_published,image_url,categories&limit=1111&pretty=true&client_id=28dZcLNq5b/json", "games")
     # creates array of hashes of game data from API
     if boardgame_array
         # skips letters without boardgame
@@ -26,13 +18,20 @@ def find_or_create_boardgame_from_first_letter(letter)
             max_players = boardgame_hash["max_players"]
             year_published = boardgame_hash["year_published"]
             image_url = boardgame_hash["image_url"]
-            category_id = Category.find_or_create_by(name: boardgame_hash["category"])
             # creates and assigns a category if it doesn't already exist
             Boardgame.find_or_create_by(name: name, description: description, min_players: min_players, max_players: max_players, year_published: year_published, image_url: image_url)
             #     #creates boardgame if it doesn't already exist
             end
         end
     end
+
+    def find_or_create_category(arg)
+        Category.create(:)
+
+
+    # def category_create(categories_hash)
+    #     if categories_hash
+    #         Category.find_or_create_by
 
 
 ('a'..'z').each do |letter|
