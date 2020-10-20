@@ -5,7 +5,7 @@ def api_response(url, key)
     # creates array of hashes from key in API
 end
 
-def find_or_create_boardgame_from_first_letter(letter)
+def find_or_create_boardgame_from_first_letter
     boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[a]&fields=name,description,min_players,max_players,year_published,image_url,categories&limit=1111&pretty=true&client_id=28dZcLNq5b/json", "games")
     # creates array of hashes of game data from API
     if boardgame_array
@@ -34,11 +34,11 @@ def find_or_create_boardgame_from_first_letter(letter)
     #         Category.find_or_create_by
 
 
-('a'..'z').each do |letter|
-    find_or_create_boardgame_from_first_letter(letter)
-end
+# ('a'..'z').each do |letter|
+#     find_or_create_boardgame_from_first_letter(letter)
+# end
 
-('0'..'9').each do |letter|
-    find_or_create_boardgame_from_first_letter(letter)
-end
+# ('0'..'9').each do |letter|
+#     find_or_create_boardgame_from_first_letter(letter)
+# end
 # iterates through every letter and number creating boardgames and their ingredients from the API

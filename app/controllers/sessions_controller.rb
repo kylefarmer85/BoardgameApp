@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to user_boardgame_path(current_user)
         else
             flash[:error] = "Username / Password combination not found"
             redirect_to login_path
