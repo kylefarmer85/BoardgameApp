@@ -1,5 +1,5 @@
 class BoardgamesController < ApplicationController
-
+    skip_before_action :require_login, only: [:home, :show]
     def home
     end
 
