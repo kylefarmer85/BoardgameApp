@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :boardgame_categories
   root 'boardgames#home'
   resources :categories
   resources :user_boardgames

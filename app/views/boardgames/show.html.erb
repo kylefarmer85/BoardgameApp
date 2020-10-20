@@ -1,7 +1,18 @@
-Boardgame Show Page
+<a><img src=<%= @boardgame.image_url %> <%= @boardgame.name %> ></a>
+<h1><%= @boardgame.name %></h1>
 
-@boardgame
+<h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
+<h4>Year Published: <%= @boardgame.year_published %></h4>
 
+
+<div><%= @desc %></div>
+<br>
+<ol>
+<% @boardgame.user_reviews.each do |r| %>
+<li>Review: <%= r.review %><br>Rating: <%= r.rating %></li>
+<% end %>
+</ol>
+<!--
 reviews - render top thumbs review, link to the boardgames reviews on review page
 description
 image
@@ -9,3 +20,4 @@ players
 published
 
 add_to_my_collection -when clicked if not signed in it will kick to signin page
+-->
