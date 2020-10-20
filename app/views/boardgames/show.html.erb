@@ -12,6 +12,14 @@
 <li>Review: <%= r.review %><br>Rating: <%= r.rating %></li>
 <% end %>
 </ol>
+
+<%= form_tag user_boardgames_path do %>
+  <%= hidden_field_tag :boardgame_id, @boardgame.id%>
+  <%= submit_tag %>
+<% end %>
+
+
+
 <!--
 reviews - render top thumbs review, link to the boardgames reviews on review page
 description

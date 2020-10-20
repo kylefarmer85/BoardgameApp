@@ -1,2 +1,5 @@
 user_boardgames show
 <%= current_user.full_name %>
+<% current_user.boardgames.each do |boardgame| %>
+  <%= image_tag boardgame.image_url, alt: "boardgame"%>
+<% end %>

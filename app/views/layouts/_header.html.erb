@@ -1,1 +1,5 @@
-<p>logo constant header info</p>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |err| %>
+   <p style=“color: red”><%= err %></p>
+  <% end %>
+<% end %>
