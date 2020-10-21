@@ -5,5 +5,6 @@
 <ol>
 <% current_user.boardgames.each do |boardgame| %>
   <li><%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%></li>
+  <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %><br>
 <% end %>
 </ol>

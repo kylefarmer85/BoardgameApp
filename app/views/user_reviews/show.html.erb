@@ -1,0 +1,15 @@
+<h3 class="title">Your Reviews</h3>
+<% current_user.user_reviews.each do |ur| %>
+<div>
+<p>Boardgame: <%= ur.boardgame.name %></p>
+<br>
+<p>Review: <%= ur.review %></p>
+<br>
+<p>Rating: <%= ur.rating %></p>
+<br>
+</div>
+<%= button_to "Delete Review", user_review_path(ur), method: "delete",  data: {confirm: "Are you sure?"} %><br>
+
+<br>
+<% end %>
+

@@ -1,19 +1,22 @@
 <div class='nav-bar'>
+
+<div class="title"><p>BoardgameSocial</p>
 <ul>
-<li><%= link_to "Search", '/' %> 
+<li class="subtitle"><%= link_to "Search", '/' %>
 <% if !current_user %>
-  <li><%= link_to "Login", login_path %> 
+  <li class="subtitle"><%= link_to "Login", login_path %>
 <% end %>
   <% if current_user %>
-  <li><%= link_to "Profile",  user_path(current_user) %>
+  <li class="subtitle"><%= link_to "Profile",  user_path(current_user) %>
 <% end %>
 <% if current_user %>
-  <li><%= link_to "Logout", logout_path, method: "delete" %> 
+  <li class="subtitle"><%= link_to "Logout", logout_path, method: "delete" %>
 <% end %>
 <% if current_user %>
-  <li><strong><p style="color: MediumSpringGreen">Welcome, <%= current_user.first_name %>!</strong></p>
+  <li class="subtitle"><strong><p style="color: MediumSpringGreen">Welcome, <%= current_user.first_name %>!</strong></p>
 <% end %>
 </ul>
+</div>
 </div>
 
 <% if flash[:errors] %>

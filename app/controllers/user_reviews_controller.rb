@@ -5,4 +5,13 @@ class UserReviewsController < ApplicationController
     flash[:errors] = @user_review.errors.full_messages
     redirect_to boardgame_path(params[:boardgame_id])
   end
+
+  def show
+  end
+
+  def destroy
+    UserReview.find_by(params[:id]).destroy
+    redirect_to user_review_path(current_user)
+  end
+
 end

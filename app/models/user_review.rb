@@ -5,4 +5,7 @@ class UserReview < ApplicationRecord
     validates :review, presence: true
     validates :rating, presence: true
 
+
+
+
 end
