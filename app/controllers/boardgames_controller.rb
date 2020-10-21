@@ -10,7 +10,7 @@ class BoardgamesController < ApplicationController
 
     def show
         @boardgame = Boardgame.find(params[:id])
-        @desc = @boardgame.description
+        @desc = @boardgame.stringify_description
     end
 
 

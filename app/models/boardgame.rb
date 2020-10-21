@@ -5,7 +5,11 @@ class Boardgame < ApplicationRecord
     has_many :user_boardgames
     has_many :users, through: :user_boardgames
 
+
+
+
     def stringify_description
+        self.description.gsub("<em>", "")
 
     end
 

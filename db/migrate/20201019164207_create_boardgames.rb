@@ -7,6 +7,10 @@ class CreateBoardgames < ActiveRecord::Migration[6.0]
       t.integer :max_players
       t.integer :year_published
       t.string  :image_url
+      t.string :publisher
+      t.string :thumb_image
+      t.string :small_image
+      t.string :medium_image
 
       t.timestamps
     end

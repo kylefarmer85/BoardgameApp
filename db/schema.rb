@@ -25,8 +25,11 @@ ActiveRecord::Schema.define(version: 2020_10_20_122125) do
     t.integer "min_players"
     t.integer "max_players"
     t.integer "year_published"
-    t.integer "category_id"
     t.string "image_url"
+    t.string "publisher"
+    t.string "thumb_image"
+    t.string "small_image"
+    t.string "medium_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

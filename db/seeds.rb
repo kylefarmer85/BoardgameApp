@@ -6,7 +6,7 @@ def api_response(url, key)
 end
 
 def find_or_create_boardgame_from_first_letter(letter)
-    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[#{letter}]&fields=name,description,min_players,max_players,year_published,image_url,categories&limit=1&pretty=true&client_id=28dZcLNq5b/json", "games")
+    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[#{letter}]&limit=10&pretty=true&client_id=28dZcLNq5b/json", "games")
     # creates array of hashes of game data from API
     if boardgame_array
         # skips letters without boardgame
@@ -19,10 +19,14 @@ def find_or_create_boardgame_from_first_letter(letter)
             max_players = boardgame_hash["max_players"]
             year_published = boardgame_hash["year_published"]
             image_url = boardgame_hash["image_url"]
+            publisher = boardgame_hash["primary_publisher"]
+            thumb_image = boardgame_hash["images"]["thumb"]
+            small_image = boardgame_hash["images"]["small"]
+            medium_image = boardgame_hash["images"]["medium"]
 
             @categories_array = boardgame_hash["categories"]
             # creates and assigns a category it doesn't already exist
-            @boardgame = Boardgame.create(name: name, description: description, min_players: min_players, max_players: max_players, year_published: year_published, image_url: image_url)
+            @boardgame = Boardgame.create(name: name, description: description, min_players: min_players, max_players: max_players, year_published: year_published, image_url: image_url, publisher: publisher, thumb_image: thumb_image, small_image: small_image, medium_image: medium_image)
 
                 create_boardgame_category_association
 
