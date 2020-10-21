@@ -13,4 +13,19 @@ class Boardgame < ApplicationRecord
 
     end
 
+    def avg_rating
+        if self.user_reviews.count > 0
+        sum = 0
+        count = 0
+        self.user_reviews.each do |user_review|
+            if user_review.rating != nil
+            sum += user_review.rating
+            count += 1
+            end
+        end
+        sum / count
+    end
+    end
+
+
 end
