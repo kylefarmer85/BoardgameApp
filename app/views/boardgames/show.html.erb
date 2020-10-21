@@ -1,15 +1,27 @@
+<br><br><%= button_to "Back to Search", '/', method: 'get' %><br><br>
 <a><img src=<%= @boardgame.medium_image %> <%= @boardgame.name %> ></a>
 <h1><%= @boardgame.name %></h1>
 
 <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
 <h4>Year Published: <%= @boardgame.year_published %></h4>
 
+<% if !@boardgame.categories.empty? %>
+  <h4>Category: <% @boardgame.categories.each do |c| %>
+      <% if @boardgame.categories.count > 1 %>
+       |
+      <% end %>
+    <%= link_to c.name, category_path(c) %>
+  <% end %>
+<% end%></h4>
+
 <%== @boardgame.description %>
 <br><br>
-<%= form_tag user_boardgames_path do %>
-  <%= hidden_field_tag :boardgame_id, @boardgame.id%>
-  <%= submit_tag "Add Game to User Collection" %>
-<% end %><br>
+<% if current_user %>
+  <%= form_tag user_boardgames_path do %>
+    <%= hidden_field_tag :boardgame_id, @boardgame.id%>
+    <%= submit_tag "Add Game to User Collection" %>
+  <% end %><br>
+<% end %>
 <ol>
 
 <% if @boardgame.avg_rating != nil %>
@@ -22,6 +34,9 @@
     Submitted By: <%= r.user.full_name %><br><br>
 <% end %>
 </ol>
+<% if !current_user %>
+  <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
+<% end %>
 
 <% if current_user %>
   <%= form_tag user_reviews_path do %>

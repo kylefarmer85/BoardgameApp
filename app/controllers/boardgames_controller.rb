@@ -2,6 +2,7 @@ class BoardgamesController < ApplicationController
     skip_before_action :require_login, only: [:home, :show, :index, :create]
     def index
         @boardgames = Boardgame.search(params[:name])
+        @cat = Boardgame.search(params[:category_id])
         @category = Category.new
         @categories = Category.all
 
@@ -12,8 +13,7 @@ class BoardgamesController < ApplicationController
     end
 
 
-    def create
-    end
+
 
 
 end

@@ -10,20 +10,27 @@
 <%= form_for @category do |f| %>
   <%= f.label "Browse by Category" %>
   <%= f.collection_select :id, @categories, :id, :name %>
-  <%= f.submit 'Search', name: nil %>
-<% end %>
-
+  <%= f.submit 'Browse', name: nil %>
+<% end %><br>
 
 <ul>
 <% @boardgames.each do |b| %>
-<li><%= link_to b.name, boardgame_path(b) %></li>
+
+<li><%= link_to b.name, boardgame_path(b) %></li><br>
+
+<li><%= link_to (image_tag b.small_image, alt: "boardgame"), boardgame_path(b) %>
+
 <% if !b.categories.empty? %>
   <li>Category:<% b.categories.each do |e| %>
-      <%= e.name %>
+      <% if b.categories.count > 1 %>
+       |
+      <% end %>
+      <%= link_to e.name, category_path(e) %>
       <% end %></li>
     <% end %>
+  
 <li><%== b.description.first(300) ...%></li>
-<br>
+<br><br>
 <% end %>
 <ul>
-<br>
+
