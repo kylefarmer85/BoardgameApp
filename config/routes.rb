@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   delete '/logout', to:  'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  put 'user_reviews/:id/like', to: 'user_reviews#like', as: 'like'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

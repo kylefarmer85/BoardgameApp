@@ -1,0 +1,30 @@
+<span class="subtitle">Share your novel boardgame with the community</span>
+<span class="form">
+<%= form_for @new_game do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :min_players %>
+  <%= f.number_field :min_players %>
+  <br>
+  <%= f.label :max_players %>
+  <%= f.number_field :max_players %>
+  <br>
+  <%= f.label :year_published %>
+  <%= f.number_field :year_published %>
+  <br>
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+  <br>
+  <%= f.label :publisher %>
+  <%= f.text_field :publisher %>
+  <br>
+  <%= f.label 'Category' %>
+  <%= f.collection_select :category_ids, @categories, :id, :name %>
+  <br>
+  <%= f.submit %>
+<% end %>
+</span>

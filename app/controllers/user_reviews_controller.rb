@@ -14,4 +14,20 @@ class UserReviewsController < ApplicationController
     redirect_to user_review_path(current_user)
   end
 
+  def like
+    review = UserReview.find(params[:id])
+
+    if review.thumbs == nil
+      review.thumbs = 1
+      review.save
+    else
+      review.thumbs += 1
+      review.save
+    end
+
+
+    redirect_to boardgame_path(review.boardgame_id)
+  end
+
+
 end

@@ -20,7 +20,11 @@
 <% @boardgame.user_reviews.each do |r| %>
 <p>Review: <%= r.review %><br>
     Rating: <%= r.rating %></li>
-    Submitted By: <%= r.user.full_name %></p>
+    Submitted By: <%= r.user.username %></p>
+  <%= pluralize(r.thumbs, 'Like') %>
+
+    <%= button_to "upvote", like_path(r), method: :put %>
+
 <% end %>
 </ol>
 

@@ -8,8 +8,6 @@ class BoardgamesController < ApplicationController
         @boardgames = Boardgame.search(params[:name])
         @category = Category.new
         @categories = Category.all
-        @new_game = Boardgame.new
-
     end
 
     def show
@@ -17,6 +15,9 @@ class BoardgamesController < ApplicationController
     end
 
     def new
+        @new_game = Boardgame.new
+        @categories = Category.all
+
     end
 
     def create
