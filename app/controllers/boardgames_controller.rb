@@ -6,6 +6,7 @@ class BoardgamesController < ApplicationController
 
     def index
         @boardgames = Boardgame.search(params[:name])
+        @cat = Boardgame.search(params[:category_id])
         @category = Category.new
         @categories = Category.all
     end

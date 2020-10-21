@@ -1,5 +1,7 @@
-user_boardgames show
-<%= current_user.full_name %>
+<%= current_user.full_name %>'s Collection<br>
+<% if current_user.boardgames.empty? %>
+  There are no games in your collection.
+  <% end %>
 <ol>
 <% current_user.boardgames.each do |boardgame| %>
   <li><%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%></li>
