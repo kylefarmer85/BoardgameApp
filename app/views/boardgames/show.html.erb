@@ -16,17 +16,18 @@
 <strong>Average User Rating: <%= @boardgame.avg_rating %><br><br></strong>
 <% end %>
 
+
 <% @boardgame.user_reviews.each do |r| %>
-<li>Review: <%= r.review %><br>
+<p>Review: <%= r.review %><br>
     Rating: <%= r.rating %></li>
-    Submitted By: <%= r.user.full_name %><br><br>
+    Submitted By: <%= r.user.full_name %></p>
 <% end %>
 </ol>
 
 <% if current_user %>
   <%= form_tag user_reviews_path do %>
     <%= label_tag "Write a Review:" %><br>
-    <%= text_area_tag :review %><br><br>
+    <%= text_area_tag :review %><br>
     <%= label_tag "Rating:" %>
     <%= number_field_tag :rating, nil, :in => 1..10 %><br><br>
     <%= submit_tag "Submit Review" %>

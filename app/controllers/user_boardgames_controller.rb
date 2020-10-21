@@ -9,7 +9,7 @@ class UserBoardgamesController < ApplicationController
         @user_boardgame = UserBoardgame.create(user_id: current_user.id, boardgame_id: params[:boardgame_id])
         flash[:errors] = @user_boardgame.errors.full_messages
         redirect_to user_boardgame_path(current_user)
-        
+
 
     end
 
@@ -17,6 +17,9 @@ class UserBoardgamesController < ApplicationController
 
     end
 
-    
+    def destroy
+        UserBoardgame.find_by(user_id: current_user.id, boardgame_id: params[:id]).destroy
+        redirect_to user_boardgame_path(current_user)
+    end
 
 end
