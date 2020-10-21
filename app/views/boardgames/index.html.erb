@@ -1,0 +1,29 @@
+<h1 class="title">Welcome to your Social Boardgame Experience</h1>
+
+
+<%= form_tag boardgames_path, :method => "get" do %>
+  <%= label_tag(:name, "What game do you want to search for?") %>
+  <%= text_field_tag :name %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
+<%= form_for @category do |f| %>
+  <%= f.label "Browse by Category" %>
+  <%= f.collection_select :id, @categories, :id, :name %>
+  <%= f.submit 'Search', name: nil %>
+<% end %>
+
+
+<ul>
+<% @boardgames.each do |b| %>
+<li><%= link_to b.name, boardgame_path(b) %></li>
+<% if !b.categories.empty? %>
+  <li>Category:<% b.categories.each do |e| %>
+      <%= e.name %>
+      <% end %></li>
+    <% end %>
+<li><%== b.description.first(300) ...%></li>
+<br>
+<% end %>
+<ul>
+<br>

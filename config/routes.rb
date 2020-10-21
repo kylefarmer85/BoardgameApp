@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :boardgame_categories
-  root 'boardgames#home'
+  root 'boardgames#index'
   resources :categories
   resources :user_boardgames
   resources :user_reviews

@@ -5,13 +5,23 @@ class Boardgame < ApplicationRecord
     has_many :user_boardgames
     has_many :users, through: :user_boardgames
 
+    def self.search(search)
+    if search
+        boardgame = Boardgame.find_by(name: search.titlecase)
+        if boardgame
 
-
-
-    def stringify_description
-        self.description.gsub("<em>", "")
-
+            Boardgame.where("name LIKE ?", "%" + search + "%") #+
+            #Boardgame.where("name LIKE ?", "%" + search.first(3) + "%").limit(10)
+        else
+            Boardgame.where("name LIKE ?", "%" + search.first(3) + "%").limit(10)
+        end
+    else
+       Boardgame.all.sample(7)
     end
+    end
+
+
+
 
     def avg_rating
         if self.user_reviews.count > 0

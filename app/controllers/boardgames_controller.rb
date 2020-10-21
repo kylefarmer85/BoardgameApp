@@ -1,18 +1,19 @@
 class BoardgamesController < ApplicationController
-    skip_before_action :require_login, only: [:home, :show]
-    def home
-        @boardgames = Boardgame.all
+    skip_before_action :require_login, only: [:home, :show, :index, :create]
+    def index
+        @boardgames = Boardgame.search(params[:name])
+        @category = Category.new
         @categories = Category.all
-        @reviews = UserReview.all
-        # @top = @boardgame.max {|boardgame, thumbs| thumbs}
-        @boardgame = Boardgame.new
+
     end
 
     def show
         @boardgame = Boardgame.find(params[:id])
-        @desc = @boardgame.stringify_description
     end
 
+
+    def create
+    end
 
 
 end

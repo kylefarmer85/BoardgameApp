@@ -4,7 +4,7 @@
 <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
 <h4>Year Published: <%= @boardgame.year_published %></h4>
 
-<%= @desc %>
+<%== @boardgame.description %>
 <br><br>
 <%= form_tag user_boardgames_path do %>
   <%= hidden_field_tag :boardgame_id, @boardgame.id%>
