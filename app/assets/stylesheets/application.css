@@ -13,8 +13,7 @@
  *= require_tree .
  *= require_self
  */
-/*
- ul {
+div.nav-bar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -22,11 +21,11 @@
   background-color: #333;
 }
 
-li {
-  float: left;
+div.nav-bar li {
+  float: right;
 }
 
-li a {
+div.nav-bar li a {
   display: block;
   color: white;
   text-align: center;
@@ -35,13 +34,12 @@ li a {
 }
 
 
-li a:hover {
+div.nav-bar li a:hover {
   background-color: #111;
 }
 
-ul {
-  position: fixed;
-  bottom: 0;
+div.nav-bar ul {
+  position: top;
+  top: 0;
   width: 100%;
 }
-*/
