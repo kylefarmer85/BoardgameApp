@@ -1,5 +1,8 @@
-user_boardgames show
-<%= current_user.full_name %>
+<p><% if current_user.user_boardgames.count == 0 %>
+There are no games in <%= current_user.full_name %>'s collection!<br>
+<%= link_to "Search for Games",'/' %>
+<% end %></p>
+
 <% current_user.boardgames.each do |boardgame| %>
   <%= image_tag boardgame.image_url, alt: "boardgame"%>
 <% end %>
