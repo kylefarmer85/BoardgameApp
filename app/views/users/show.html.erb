@@ -14,12 +14,12 @@
   |
   <%= link_to "Your Reviews", user_review_path(current_user) %>
 <br>
-<div class="box">
-<div class="box">
-<h4 class="subtitle">Checkout More Games in Categories You Like!</h4>
+<div class="box has-background-link">
+<div class="box has-text-centered">
+<h4 class="subtitle has-text-primary-dark">Checkout More Games in Categories You Like!</h4>
 <% current_user.boardgames.each do |c| %>
   <% c.categories.each do |u| %>
-  <%= link_to u.name, category_path(u) %>
+  <div class="button is-rounded has-background-success-light"><%= link_to u.name, category_path(u) %> </div>
   <br>
   <% end %>
 <% end %>

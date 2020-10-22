@@ -10,8 +10,8 @@
   </div>
 </div>
 
-<div class="box">
 <%   if @boardgame %>
+  <div class="box">
       <% @boardgame.each do |b| %>
       <div class="search-box">
         <div class="game-name"><%= link_to b.name, boardgame_path(b) %>

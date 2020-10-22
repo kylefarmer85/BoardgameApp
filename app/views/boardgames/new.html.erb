@@ -1,31 +1,40 @@
 <span class="subtitle">Share your novel boardgame with the community</span>
-<span class="form">
-<%= form_for @boardgame do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
-  <%= f.label :min_players %>
-  <%= f.number_field :min_players %>
-  <br>
-  <%= f.label :max_players %>
-  <%= f.number_field :max_players %>
-  <br>
-  <%= f.label :year_published %>
-  <%= f.number_field :year_published %>
-  <br>
-  <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
-  <br>
-  <%= f.label :publisher %>
-  <%= f.text_field :publisher %>
 
-  <br>
-  <%= f.label 'Category' %>
-  <%= f.collection_select :id, @categories, :id, :name %>
-  <br>
-  <%= f.submit %>
-<% end %>
-</span>
+<div class="back_img">
+  <div class="columns is-centered mt-2">
+    <div class="column is-one-third">
+    <div class="box">
+      <h1 class="is-size-2 has-text-weight-bold mb-3">Share your novel boardgame with the community</h1>
+        <%= form_for @boardgame do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <br>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+          <br>
+          <%= f.label :min_players %>
+          <%= f.number_field :min_players %>
+          <br>
+          <%= f.label :max_players %>
+          <%= f.number_field :max_players %>
+          <br>
+          <%= f.label :year_published %>
+          <%= f.number_field :year_published %>
+          <br>
+          <%= f.label :image_url %>
+          <%= f.text_field :image_url %>
+          <br>
+          <%= f.label :publisher %>
+          <%= f.text_field :publisher %>
+
+          <br>
+          <%= f.label 'Category' %>
+          <%= f.collection_select :id, @categories, :id, :name %>
+          <br>
+          <%= f.submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  </div>
