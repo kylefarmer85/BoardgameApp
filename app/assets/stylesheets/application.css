@@ -14,7 +14,10 @@
  *= require_self
  */
 
-
+ body {
+  background-image: url(https://www.freeiconspng.com/uploads/white-dice-png-2.png);
+  opacity: 1;
+}
 
 div.nav-bar ul {
   list-style-type: none;
@@ -53,14 +56,14 @@ div.image  {
   margin-right: 0;
   width: 100%;
 }
-
+/* 
 div.back_img{
   background-image: url("https://preview.free3d.com/img/2015/10/2145887983612462987/127cs5lq-900.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   opacity: 1;
-}
+} */
 
 div.grid {
   width: 100%;
@@ -76,12 +79,16 @@ div.grid {
   overflow:hidden;
 }
 
-.content {
+.custom-box {
   position:absolute;
   text-align:center;
   height:80%; /* = 100% - 2*10% padding */
   width:90%; /* = 100% - 2*5% padding */
   padding: 10% 5%;
+  border: 10px solid;
+  border-color: #3498dc;
+  padding: 0px;
+  box-shadow: 5px 10px 18px #111111;
 }
 .table{
   display:table;
