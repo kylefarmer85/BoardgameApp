@@ -1,7 +1,9 @@
 <div class="back_img">
 <div class="columns is-centered mt-2">
   <div class="column is-one-third">
-    <h1 class="is-size-2 has-text-weight-bold mb-3"> Log-in</h1>
+    <div class="box">
+    <h1 class="is-size-2 has-text-weight-bold mb-3 has-text-centered"> Log-in</h1>
+    </div>
 
       <% if flash[:error] %>
         <p style="color: red"><%= flash[:error] %></p><br><br>
@@ -14,15 +16,26 @@
     </div>
     <div class="field">
       <%= f.label "Password", class: "label" %>
-      <%= f.password_field :password, class: "input" %>
+      <%= f.password_field :password, class: "input " %>
     </div>
 
-  <div class="action">
-  <%= submit_tag "Log in", class: "button" %>
-    <p class="">OR</p>
-  <%= link_to "Sign up", new_user_path, class: "button" %>
+
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+      <div class="box is-fullwidth has-background-info-dark">
+        <article class="box">
+          <div class="action">
+          <%= submit_tag "Log in", class: "button has-background-info-dark" %>
+            <br>
+            <br>
+          <%= link_to "Sign up", new_user_path, class: "button has-background-info-dark" %>
+          </div>
+        <% end %>
+        </article>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
 
   </div>
