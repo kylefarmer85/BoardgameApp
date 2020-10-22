@@ -10,16 +10,12 @@
         <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="has-background-image-light is-flexible">
+  <body>
 
    <section class="section">
     <div class="container">
       <%= render '/layouts/header'%>
-
         <%= yield %>
-
-
-
       <%= render '/layouts/footer'%>
       </div>
   </section>
