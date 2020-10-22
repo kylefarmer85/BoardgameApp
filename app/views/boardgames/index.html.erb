@@ -13,10 +13,11 @@
 <div class="box">
 <%   if @boardgame %>
       <% @boardgame.each do |b| %>
-        <%= link_to b.name, boardgame_path(b) %>
-        <br>
+      <div class="search-box">
+        <div class="game-name"><%= link_to b.name, boardgame_path(b) %>
+        <br><br></div>
         <% if b.small_image %>
-          <%= link_to (image_tag b.small_image, alt: "boardgame"), boardgame_path(b) %>
+          <%= link_to (image_tag b.small_image, alt: "boardgame"), boardgame_path(b) %><br>
         <% end %>
 
         <% if !b.categories.empty? %>
@@ -26,11 +27,13 @@
             <% end %>
             <%= link_to e.name, category_path(e) %>
           <% end %>
-        <% end %>
+        <% end %><br>
 
         <%== b.description.first(300) ...%>
         <%  %>
+        </div>
       <% end %>
+      
 <% end %>
 
 

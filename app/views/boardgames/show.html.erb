@@ -3,25 +3,37 @@
 </div>
 <br>
 <br>
+
+<div class="show-box">
 <% if @boardgame.medium_image %>
-<a><img src=<%= @boardgame.medium_image %> <%= @boardgame.name %> ></a>
+  <%= image_tag @boardgame.medium_image %>
 <% end %>
+</div>
+
+
+<div class="search-box">
 <div class="box">
-<h4><b><%= @boardgame.name %></b></h4><br>
-<h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
-<h4>Year Published: <%= @boardgame.year_published %></h4>
+  <div class="game-name"><%= @boardgame.name %></div>
+  <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
+  
+  <h4>Year Published: <%= @boardgame.year_published %></h4>
 
 <% if !@boardgame.categories.empty? %>
-  <h4>Category: <% @boardgame.categories.each do |c| %>
+  <b>Category:</b> <% @boardgame.categories.each do |c| %>
       <% if @boardgame.categories.count > 1 %>
        |
       <% end %>
     <%= link_to c.name, category_path(c) %>
   <% end %>
-<% end%><br><br></h4>
+<% end%><br>
 
 <%== @boardgame.description %>
 <br><br>
+
+<% if @boardgame.avg_rating != nil %>
+<div class="game-name">Average User Rating: <%= @boardgame.avg_rating %></div><br>
+<% end %>
+
 <% if current_user %>
   <%= form_tag user_boardgames_path do %>
     <%= hidden_field_tag :boardgame_id, @boardgame.id%>
@@ -30,11 +42,6 @@
     </div>
 
   <% end %>
-<% end %>
-
-
-<% if @boardgame.avg_rating != nil %>
-<strong>Average User Rating: <%= @boardgame.avg_rating %><br><br></strong>
 <% end %>
 
 <% if !current_user %>
@@ -46,13 +53,13 @@
   <% @boardgame.user_reviews.each do |r| %>
       <div class="box is-fullwidth">
             <div>
-              <p class=""> Review: <%= r.review %> </p>
+              <p class=""><b> Review:</b> <%= r.review %> </p>
             </div>
             <div>
-              <p class="">Rating: <%= r.rating %>
+              <p class=""><b>Rating:</b> <%= r.rating %>
             </div>
             <div>
-              <p class="">Submitted By: <%= r.user.username %>
+              <p class=""><b>Submitted By:</b> <%= r.user.username %>
             </div>
             <div>
               <%= pluralize(r.thumbs, 'Like') %>
@@ -64,6 +71,7 @@
   <% end %>
   </div>
 </div>
+
 
 
 
@@ -90,5 +98,6 @@
               <%= hidden_field_tag :boardgame_id, @boardgame.id%>
     <% end %>
 <% end %>
+</div>
 </div>
 </div>
