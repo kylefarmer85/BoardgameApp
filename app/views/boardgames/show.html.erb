@@ -21,118 +21,67 @@
 <% if current_user %>
   <%= form_tag user_boardgames_path do %>
     <%= hidden_field_tag :boardgame_id, @boardgame.id%>
-    <%= submit_tag "Add Game to User Collection" %>
-  <% end %><br>
+    <div class="action">
+    <%= submit_tag "Add Game to User Collection", class: "button is-dark is-rounded" %>
+    </div>
+  <% end %>
 <% end %>
-<ol>
+
 
 <% if @boardgame.avg_rating != nil %>
 <strong>Average User Rating: <%= @boardgame.avg_rating %><br><br></strong>
 <% end %>
 
-
-<% @boardgame.user_reviews.each do |r| %>
-<p>Review: <%= r.review %><br>
-    Rating: <%= r.rating %></li>
-    Submitted By: <%= r.user.username %></p>
-  <%= pluralize(r.thumbs, 'Like') %>
-
-    <%= button_to "upvote", like_path(r), method: :put %>
-    <div class="button" type="submit" action="">
-    <figure class="image is-32x32">
-    <img src="https://freeiconshop.com/wp-content/uploads/edd/like-solid.png" alt="thumbs up butoon">
-    <%= button_to "upvote", like_path(r), method: :put %>
-    </figure>
+<div class="columns is-left mt-6">
+  <div class="column is-half">
+  <% @boardgame.user_reviews.each do |r| %>
+      <div class="box is-fullwidth">
+            <div>
+              <p class=""> Review: <%= r.review %> </p>
+            </div>
+            <div>
+              <p class="">Rating: <%= r.rating %>
+            </div>
+            <div>
+              <p class="">Submitted By: <%= r.user.username %>
+            </div>
+            <div>
+              <%= pluralize(r.thumbs, 'Like') %>
+            </div>
+          <div class="action">
+            <%= button_to "Like", like_path(r), method: :put, class: "button is-rounded has-background-link-light" %>
+          </div>
     </div>
+  <% end %>
+  </div>
+</div>
 
-<% end %>
-</ol>
+
 
 <% if !current_user %>
-  <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
+      <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
+    <% end %>
+
+
+
+    <% if current_user %>
+      <div class="columns is-left mt-6">
+        <div class="column is-half">
+        <div class="box is-fullwidth">
+          <%= form_tag user_reviews_path do %>
+            <div class="field">
+                <%= label_tag :review, "Write a Review:", class: "label" %>
+                <%= text_area_tag :review, "", class: "input is-half"%>
+            </div>
+            <div class="field">
+                <%= label_tag :rating, "Rating:", class: "label"%>
+                <%= number_field_tag :rating, nil, :in => 1..10%>
+            </div>
+            <div class="action">
+                <%= submit_tag "Submit Review", class: "button is-small is-rounded"%>
+            </div>
+              <%= hidden_field_tag :boardgame_id, @boardgame.id%>
+    <% end %>
 <% end %>
-
-<% if current_user %>
-  <%= form_tag user_reviews_path do %>
-    <b><%= label_tag "Write a Review:" %></b><br>
-    <%= text_area_tag :review %><br>
-    <b><%= label_tag "Rating:" %></b>
-    <%= number_field_tag :rating, nil, :in => 1..10 %><br><br>
-    <%= submit_tag "Submit Review" %>
-    <%= hidden_field_tag :boardgame_id, @boardgame.id%>
-  <% end %>
-<% end %>
-
-
-
-<article class="media">
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure>
-  <div class="media-content">
-    <div class="field">
-      <p class="control">
-        <textarea class="textarea" placeholder="Add a comment..."></textarea>
-      </p>
-    </div>
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <a class="button is-info">Submit</a>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          <label class="checkbox">
-            <input type="checkbox"> Press enter to submit
-          </label>
-        </div>
-      </div>
-    </nav>
-  </div>
-</article>
-
-
-<!--
-reviews - render top thumbs review, link to the boardgames reviews on review page
-description
-image
-players
-published
-
-add_to_my_collection -when clicked if not signed in it will kick to signin page
--->
-<article class="media">
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure>
-  <div class="media-content">
-    <div class="content">
-      <p>
-        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-        <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-      </p>
-    </div>
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-reply"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-heart"></i></span>
-        </a>
-      </div>
-    </nav>
-  </div>
-  <div class="media-right">
-    <button class="delete"></button>
-  </div>
-</article>
+</div>
+</div>
