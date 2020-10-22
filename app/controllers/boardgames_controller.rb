@@ -16,14 +16,16 @@ class BoardgamesController < ApplicationController
     end
 
     def new
-        @new_game = Boardgame.new
+        @boardgame = Boardgame.new
         @categories = Category.all
 
     end
 
     def create
         boardgame = Boardgame.create(boardgame_params)
-        category = Category.create_or_find_by(params[:category_ids])
+        
+        category = Category.find(params[:boardgame][:id])
+
         BoardgameCategory.create(:boardgame_id => boardgame.id, category_id: category.id )
         redirect_to boardgame_path(boardgame)
     end

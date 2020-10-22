@@ -1,6 +1,6 @@
 <span class="subtitle">Share your novel boardgame with the community</span>
 <span class="form">
-<%= form_for @new_game do |f| %>
+<%= form_for @boardgame do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
@@ -21,9 +21,10 @@
   <br>
   <%= f.label :publisher %>
   <%= f.text_field :publisher %>
+
   <br>
   <%= f.label 'Category' %>
-  <%= f.collection_select :category_ids, @categories, :id, :name %>
+  <%= f.collection_select :id, @categories, :id, :name %>
   <br>
   <%= f.submit %>
 <% end %>
