@@ -1,4 +1,5 @@
 class UserReviewsController < ApplicationController
+  skip_before_action :require_login, only: [:highest_rated]
 
   def create
     @user_review = UserReview.create(user_id: current_user.id, boardgame_id: params[:boardgame_id], review: params[:review], rating: params[:rating])

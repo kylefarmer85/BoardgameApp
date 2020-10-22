@@ -1,5 +1,5 @@
 class BoardgamesController < ApplicationController
-    skip_before_action :require_login, only: [:home, :show, :index, :create, :highest_rated]
+    skip_before_action :require_login, only: [:home, :show, :index, :create]
     # validates :name, :description, :min_players, :max_players, :year_published, :publisher, presence: :true
     # validates :description, length: {minimum: 100}
     # validates :min_players, length: {minimum: 1}
