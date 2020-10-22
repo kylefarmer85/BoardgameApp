@@ -5,7 +5,10 @@ class BoardgamesController < ApplicationController
     # validates :min_players, length: {minimum: 1}
 
     def index
-        @boardgames = Boardgame.search(params[:name])
+        @boardgames = Boardgame.all.sample(6)
+        if params[:name] != ""
+            @boardgame = Boardgame.search(params[:name])
+        end
         @cat = Boardgame.search(params[:category_id])
         @category = Category.new
         @categories = Category.all
@@ -23,7 +26,7 @@ class BoardgamesController < ApplicationController
 
     def create
         boardgame = Boardgame.create(boardgame_params)
-        
+
         category = Category.find(params[:boardgame][:id])
 
         BoardgameCategory.create(:boardgame_id => boardgame.id, category_id: category.id )

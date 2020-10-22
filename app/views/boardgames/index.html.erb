@@ -1,96 +1,143 @@
 <h1 class="title">Welcome to your Social Boardgame Experience</h1>
 
+<div>
 
-<%= form_tag boardgames_path, :method => "get" do %>
-  <%= label_tag(:name, "What game do you want to search for?") %>
-  <%= text_field_tag :name %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+<%   if @boardgame %>
+      <% @boardgame.each do |b| %>
+        <%= link_to b.name, boardgame_path(b) %>
+        <br>
+        <% if b.small_image %>
+          <%= link_to (image_tag b.small_image, alt: "boardgame"), boardgame_path(b) %>
+        <% end %>
 
-<%= form_for @category do |f| %>
-  <%= f.label "Browse by Category" %>
-  <%= f.collection_select :id, @categories, :id, :name %>
-  <%= f.submit 'Browse', name: nil %>
-<% end %>
-<%= link_to "Highest User Rated Games", highest_rated_path %>
-<br>
-<br>
-<ul>
-  <!-- The magical tile element! -->
+        <% if !b.categories.empty? %>
+          Category:<% b.categories.each do |e| %>
+            <% if b.categories.count > 1 %>
+              |
+            <% end %>
+            <%= link_to e.name, category_path(e) %>
+          <% end %>
+        <% end %>
 
-<% @boardgames.each do |b| %>
-
-<li><b><%= link_to b.name, boardgame_path(b) %></b></li><br>
-<% if b.small_image %>
-  <li><%= link_to (image_tag b.small_image, alt: "boardgame"), boardgame_path(b) %>
-<% end %>
-
-<% if !b.categories.empty? %>
-  <li>Category:<% b.categories.each do |e| %>
-      <% if b.categories.count > 1 %>
-       |
+        <%== b.description.first(300) ...%>
+        <%  %>
       <% end %>
-      <%= link_to e.name, category_path(e) %>
-      <% end %></li>
-    <% end %>
-
-<li><%== b.description.first(300) ...%></li>
-<br><br>
 <% end %>
-<ul>
 
+
+</div>
+
+
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+      <div class="box is-fullwidth">
+        <article class="box">
+          <%= form_tag boardgames_path, :method => "get" do %>
+          <div class="field has-text-centered">
+            <%= label_tag :name, "Search Boardgames", class: "label  has-text-centered"%>
+            <%= text_field_tag :name, "", class: "input" %>
+            </div>
+            <div class="action">
+            <%= submit_tag "Search", name: nil, class: "button is-rounded is-small is-fullwidth" %>
+          <% end %>
+          </div>
+        </article>
+
+        <article class="box">
+          <%= form_for @category do |f| %>
+          <div class="field  has-text-centered">
+            <%= f.label "Browse by Category", class: "label" %>
+            <%= f.collection_select :id, @categories, :id, :name, controls: "dropdown-menu" %>
+            </div>
+            <div class="action">
+            <%= f.submit 'Browse', name: nil, class: "button is-rounded is-small is-fullwidth" %>
+            <% end %>
+            </div>
+        </article>
+      </div>
+
+      <div class="action has-text-centered">
+      <%= link_to "Highest User Rated Games", highest_rated_path, class: "button is-rounded" %>
+      </div>
+
+    </div>
+
+
+  </div>
 <br>
-<p>Do you have an original boardgame?</p>
-<p>Then share your novel boardgame with the community</p>
-    <span class="button"> <%= link_to "Submit a Boardgame", new_boardgame_path %> </span>
-<p>Share your novel boardgame with the community</p>
+<br>
+<div class="box has-background-success-light	">
+    <div class="level">
+      <p class="level-item has-text-centered">
+        Play?
+      </p>
+      <p class="level-item has-text-centered">
+        Cooperative?
+      </p>
+      <p class="level-item has-text-weight-bold has-text-grey-light is-size-2 has-text-centered ">
+        Try These Random Games
+      </p>
+      <p class="level-item has-text-centered">
+        Competative?
+      </p>
+      <p class="level-item has-text-centered">
+        Contactless?
+      </p>
+    </div>
+</div>
 
 
 <div class="tile is-ancestor">
   <div class="tile is-vertical is-8">
     <div class="tile">
       <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-primary">
-          <p><% if @boardgames[0].small_image %>
 
+
+        <article class="tile is-child notification is-primary">
+            <% if @boardgames[0].small_image %>
+            <%= link_to (image_tag @boardgames[0].small_image, alt: "boardgame"), boardgame_path(@boardgames[0]) %>
+            <% end %>
             <% if !@boardgames[0].categories.empty? %>
-            <li>Category:<% @boardgames[0].categories.each do |e| %>
+            <li>Category<% @boardgames[0].categories.each do |e| %>
                 <% if @boardgames[0].categories.count > 1 %>
                  |
                 <% end %>
                 <%= link_to e.name, category_path(e) %>
-                <% end %></li>
-                <% end %>
-
-            <li><%= link_to (image_tag @boardgames[0].small_image, alt: "boardgame"), boardgame_path(@boardgames[0]) %>
-            <% end %></p>
+              <% end %>
+            <% end %>
           <p class="title"><%= @boardgames[0].name %></p>
-          <p class="subtitle"><%== @boardgames[0].description.first(300) %></p>
+          <p class="subtitle"><%== @boardgames[0].description.first(300)... %></p>
+        <div class="content">
         </article>
-        <article class="tile is-child notification is-warning">
-            <p><% if @boardgames[1].small_image %>
 
+
+        <article class="tile is-child notification is-warning">
+            <% if @boardgames[1].small_image %>
+            <%= link_to (image_tag @boardgames[1].small_image, alt: "boardgame"), boardgame_path(@boardgames[1]) %>
+            <% end %>
             <% if !@boardgames[1].categories.empty? %>
-            <li>Category:<% @boardgames[1].categories.each do |e| %>
+            <li>Category<% @boardgames[1].categories.each do |e| %>
                 <% if @boardgames[1].categories.count > 1 %>
                  |
                 <% end %>
                 <%= link_to e.name, category_path(e) %>
-                <% end %></li>
-                <% end %>
-
-            <li><%= link_to (image_tag @boardgames[1].small_image, alt: "boardgame"), boardgame_path(@boardgames[1]) %>
-            <% end %></p>
+              <% end %>
+            <% end %>
           <p class="title"><%= @boardgames[1].name %></p>
-          <p class="subtitle"><%== @boardgames[1].description.first(300) %></p>        </article>
+          <p class="subtitle"><%== @boardgames[1].description.first(200)... %></p>
+        <div class="content">
+          </article>
+
       </div>
+
+
       <div class="tile is-parent">
         <article class="tile is-child notification is-info">
             <% if @boardgames[2].medium_image %>
             <%= link_to (image_tag @boardgames[2].medium_image, alt: "boardgame"), boardgame_path(@boardgames[2]) %>
             <% end %>
             <% if !@boardgames[2].categories.empty? %>
-            <li>Category:<% @boardgames[2].categories.each do |e| %>
+            <li>Category<% @boardgames[2].categories.each do |e| %>
                 <% if @boardgames[2].categories.count > 1 %>
                  |
                 <% end %>
@@ -98,52 +145,58 @@
               <% end %>
             <% end %>
           <p class="title"><%= @boardgames[2].name %></p>
-          <p class="subtitle"><%== @boardgames[2].description.first(700) %></p>        </article>
+          <p class="subtitle"><%== @boardgames[2].description.first(500)... %></p>
+          </article>
           <figure class="image is-4by3">
             <img src="https://bulma.io/images/placeholders/640x480.png">
           </figure>
         </article>
       </div>
     </div>
+
+
     <div class="tile is-parent">
       <article class="tile is-child notification is-danger">
-                    <% if @boardgames[3].small_image %>
-                <%= link_to (image_tag @boardgames[3].small_image, alt: "boardgame"), boardgame_path(@boardgames[3]) %>
-              <% end %>
-              <% if !@boardgames[3].categories.empty? %>
-                <li>Category:<% @boardgames[3].categories.each do |e| %>
-                  <% if @boardgames[3].categories.count > 1 %>
-                   |
-                  <% end %>
-                  <%= link_to e.name, category_path(e) %>
-                <% end %>
-              <% end %>
 
-          <p class="title"><%= @boardgames[3].name %></p>
-          <p class="subtitle"><%== @boardgames[3].description.first(300) %></p>        </article>
+            <% if @boardgames[4].small_image %>
+            <%= link_to (image_tag @boardgames[4].small_image, alt: "boardgame"), boardgame_path(@boardgames[4]) %>
+            <% end %>
+
+            <% if !@boardgames[4].categories.empty? %>
+            <p>Category<% @boardgames[4].categories.each do |e| %>
+                <% if @boardgames[4].categories.count > 1 %>
+                 |
+                <% end %>
+                <%= link_to e.name, category_path(e) %>
+              <% end %>
+            <% end %></p>
+          <p class="title"><%= @boardgames[4].name %></p>
+          <p class="subtitle"><%== @boardgames[4].description.first(700)... %></p>
+          </article>
             <div class="content">
           <!-- Content -->
         </div>
       </article>
     </div>
   </div>
+
+
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">
-          <p class="title"><%= @boardgames[5].name %></p>
-          <p class="subtitle"><%== @boardgames[5].description.first(300) %></p>
-                <% if @boardgames[5].small_image %>
-                <%= link_to (image_tag @boardgames[5].small_image, alt: "boardgame"), boardgame_path(@boardgames[5]) %>
-              <% end %>
-              <% if !@boardgames[5].categories.empty? %>
-                <li>Category:<% @boardgames[5].categories.each do |e| %>
-                  <% if @boardgames[5].categories.count > 1 %>
-                   |
-                  <% end %>
-                  <%= link_to e.name, category_path(e) %>
+            <% if @boardgames[5].medium_image %>
+            <%= link_to (image_tag @boardgames[5].medium_image, alt: "boardgame"), boardgame_path(@boardgames[5]) %>
+            <% end %>
+            <% if !@boardgames[5].categories.empty? %>
+            <li>Category<% @boardgames[5].categories.each do |e| %>
+                <% if @boardgames[5].categories.count > 1 %>
+                 |
                 <% end %>
+                <%= link_to e.name, category_path(e) %>
               <% end %>
-
+            <% end %>
+          <p class="title"> <%= @boardgames[5].name %></p>
+          <p class="subtitle"><%== @boardgames[5].description.first(1000)... %></p>
         <div class="content">
           <!-- Content -->
         </div>
@@ -151,3 +204,9 @@
     </article>
   </div>
 </div>
+
+<section>
+  <div class="action">
+    <%= link_to "Submit a Boardgame", new_boardgame_path, class: "input button is-link is-centered" %>
+  </div>
+</section>

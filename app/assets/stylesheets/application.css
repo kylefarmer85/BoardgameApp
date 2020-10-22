@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ body 
+
 div.nav-bar ul {
   list-style-type: none;
   margin: 0;
