@@ -1,4 +1,4 @@
-<h3>User Login</h3>
+<h3><b>User Login</b><br><br></h3>
 
 <%= form_for @user, url: login_path, method: :post do |f| %>
   Username: <%= f.text_field :username %><br><br>
@@ -11,3 +11,7 @@
 <% if flash[:error] %>
   <p style="color: red"><%= flash[:error] %></p><br><br>
   <% end %>
+
+<div class="image">
+      <%= image_tag "https://www.freeiconspng.com/uploads/white-dice-png-2.png" %>
+      </div>

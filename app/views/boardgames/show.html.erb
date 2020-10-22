@@ -1,6 +1,8 @@
-<br><br><%= button_to "Back to Search", '/', method: 'get' %><br><br>
+<br><%= button_to "Back to Search", '/', method: 'get' %><br><br>
+<h4><b><%= @boardgame.name %></b></h4><br>
+<% if @boardgame.medium_image %>
 <a><img src=<%= @boardgame.medium_image %> <%= @boardgame.name %> ></a>
-<h1><%= @boardgame.name %></h1>
+<% end %>
 
 <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
 <h4>Year Published: <%= @boardgame.year_published %></h4>
@@ -12,7 +14,7 @@
       <% end %>
     <%= link_to c.name, category_path(c) %>
   <% end %>
-<% end%></h4>
+<% end%><br><br></h4>
 
 <%== @boardgame.description %>
 <br><br>
@@ -30,20 +32,21 @@
 
 
 <% @boardgame.user_reviews.each do |r| %>
-<p>Review: <%= r.review %><br>
-    Rating: <%= r.rating %></li>
-    Submitted By: <%= r.user.full_name %></p>
+<p><b>Review:</b> <%= r.review %><br>
+    <b>Rating:</b> <%= r.rating %></li><br>
+    <i>Submitted By:</i> <%= r.user.full_name %></p><br>
 <% end %>
 </ol>
+
 <% if !current_user %>
   <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
 <% end %>
 
 <% if current_user %>
   <%= form_tag user_reviews_path do %>
-    <%= label_tag "Write a Review:" %><br>
+    <b><%= label_tag "Write a Review:" %></b><br>
     <%= text_area_tag :review %><br>
-    <%= label_tag "Rating:" %>
+    <b><%= label_tag "Rating:" %></b>
     <%= number_field_tag :rating, nil, :in => 1..10 %><br><br>
     <%= submit_tag "Submit Review" %>
     <%= hidden_field_tag :boardgame_id, @boardgame.id%>

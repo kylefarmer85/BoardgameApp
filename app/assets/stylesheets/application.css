@@ -43,3 +43,10 @@ div.nav-bar ul {
   top: 0;
   width: 100%;
 }
+
+div.image  {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  width: 50%;
+}

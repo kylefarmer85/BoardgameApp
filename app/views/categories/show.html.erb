@@ -1,16 +1,18 @@
-
-<strong><br><br><br>Browse Category: <%= @category.name %></strong><br><br>
+<b>Browse Category: <%= @category.name %></b><br><br>
 
 <% if @category.boardgames.count == 0 %>
-
     <p>Sorry, currently no games in this category.</p>
     <%= button_to "Back to Search", '/', method: 'get' %>
-
   <% else %>
 
     <%= button_to "Back to Search", '/', method: 'get' %><br><br>
+
     <% @category.boardgames.each do |boardgame| %>
-    <p><%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame) %><br>
+
+    <% if boardgame.small_image %>
+      <p><%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame) %><br>
+    <% end %>
+
     <%= link_to boardgame.name, boardgame_path(boardgame) %><br>
     Players: <%= boardgame.min_players %> - <%= boardgame.max_players %></p><br><br>
 
