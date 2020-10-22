@@ -20,9 +20,6 @@ class Boardgame < ApplicationRecord
     end
     end
 
-
-
-
     def avg_rating
         if self.user_reviews.count > 0
         sum = 0
@@ -36,6 +33,5 @@ class Boardgame < ApplicationRecord
         sum / count
     end
     end
-
 
 end
