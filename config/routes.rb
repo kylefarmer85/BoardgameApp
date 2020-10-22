@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   put 'user_reviews/:id/like', to: 'user_reviews#like', as: 'like'
+  get '/highest_rated', to: 'boardgames#highest_rated', as: 'highest_rated'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

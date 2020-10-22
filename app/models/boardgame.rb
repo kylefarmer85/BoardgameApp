@@ -20,9 +20,6 @@ class Boardgame < ApplicationRecord
     end
     end
 
-
-
-
     def avg_rating
         if self.user_reviews.count > 0
         sum = 0
@@ -36,6 +33,17 @@ class Boardgame < ApplicationRecord
         sum / count
     end
     end
+
+    def self.highest_rated
+        games_hash = {}
+        all.each do |game|
+            if game.user_reviews.count > 0
+                games_hash[game] = game.avg_rating
+            end          
+        end
+        array = games_hash.sort_by {|k,v| -v}.to_h
+    end
+
 
 
 end

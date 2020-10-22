@@ -1,0 +1,9 @@
+<b>Highest User Rated Games</b><br><br>
+<% @highest_rated_games.each do |game, rating| %>
+  <% if game.medium_image %>
+    <%= link_to (image_tag game.medium_image, alt: "boardgame"), boardgame_path(game) %>
+  <% end %><br>
+  <%= link_to game.name, boardgame_path(game) %><br>
+  Average User Rating: <b><%= rating %></b><br><br><br>
+<% end %>
+

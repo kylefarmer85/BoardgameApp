@@ -28,6 +28,10 @@ class BoardgamesController < ApplicationController
         redirect_to boardgame_path(boardgame)
     end
 
+    def highest_rated
+        @highest_rated_games = Boardgame.highest_rated
+    end
+
     private
 
     def boardgame_params
