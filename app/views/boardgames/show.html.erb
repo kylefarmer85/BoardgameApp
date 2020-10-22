@@ -1,9 +1,13 @@
-<br><%= button_to "Back to Search", '/', method: 'get' %><br><br>
-<h4><b><%= @boardgame.name %></b></h4><br>
+<div class="action is-right-aligned">
+<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-dark"%>
+</div>
+<br>
+<br>
 <% if @boardgame.medium_image %>
 <a><img src=<%= @boardgame.medium_image %> <%= @boardgame.name %> ></a>
 <% end %>
-
+<div class="box">
+<h4><b><%= @boardgame.name %></b></h4><br>
 <h4>How many players: <%= (@boardgame.min_players != 0 ? @boardgame.min_players : 0) %> to <%= @boardgame.max_players %> </h4>
 <h4>Year Published: <%= @boardgame.year_published %></h4>
 
@@ -24,6 +28,7 @@
     <div class="action">
     <%= submit_tag "Add Game to User Collection", class: "button is-dark is-rounded" %>
     </div>
+
   <% end %>
 <% end %>
 
@@ -31,6 +36,10 @@
 <% if @boardgame.avg_rating != nil %>
 <strong>Average User Rating: <%= @boardgame.avg_rating %><br><br></strong>
 <% end %>
+
+<% if !current_user %>
+      <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
+    <% end %>
 
 <div class="columns is-left mt-6">
   <div class="column is-half">
@@ -58,11 +67,9 @@
 
 
 
-<% if !current_user %>
-      <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
-    <% end %>
 
 
+</div>
 
     <% if current_user %>
       <div class="columns is-left mt-6">

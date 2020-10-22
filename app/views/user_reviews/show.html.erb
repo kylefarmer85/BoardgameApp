@@ -1,4 +1,15 @@
-<h3 class="title">Your Reviews</h3>
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+      <div class="box is-fullwidth has-background-info-dark">
+        <article class="box">
+          <div class="title has-text-centered">
+            <h3 class="title">Your Reviews</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% current_user.user_reviews.each do |ur| %>
 <article class="message is-info">
   <div class="message-header">

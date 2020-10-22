@@ -24,7 +24,7 @@ div.nav-bar ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: hsl(204, 71%, 39%);
 }
 
 div.nav-bar li {
@@ -56,7 +56,7 @@ div.image  {
   margin-right: 0;
   width: 100%;
 }
-/* 
+/*
 div.back_img{
   background-image: url("https://preview.free3d.com/img/2015/10/2145887983612462987/127cs5lq-900.jpg");
   background-repeat: no-repeat;

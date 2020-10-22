@@ -1,28 +1,44 @@
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+      <div class="box is-fullwidth has-background-info-dark">
+        <article class="box">
+
 <h1><b><%= current_user.full_name %>'s Profile</b></h1><br>
 <p>Username: <%= current_user.username%><br>
    Email: <%= current_user.email%>
 </p>
 <br>
 <br>
-
-<h4 class="subtitle">Your Categories</h4>
+<br>
+  <%= link_to "Your Boardgame Collection", user_boardgame_path(current_user) %>
+  |
+  <%= link_to "Your Reviews", user_review_path(current_user) %>
+<br>
+<div class="box">
+<div class="box">
+<h4 class="subtitle">Checkout More Games in Categories You Like!</h4>
 <% current_user.boardgames.each do |c| %>
   <% c.categories.each do |u| %>
   <%= link_to u.name, category_path(u) %>
   <br>
   <% end %>
 <% end %>
+</div>
+</div>
+
 <br>
-
- <%= button_to "Edit User", edit_user_path(current_user), method: "get"%>
- <br>
-  <%= button_to "Delete User", user_path(current_user), method: "delete",  data: {confirm: "Are you sure?"} %>
-  <br>
-  <%= button_to "Back to Search", '/', method: 'get' %>
-  <br>
-
-  <%= link_to "Your Boardgame Collection", user_boardgame_path(current_user) %>
-  |
-  <%= link_to "Your Reviews", user_review_path(current_user) %>
+  <div class="action">
+ <%= button_to "Edit User", edit_user_path(current_user), method: "get", class: "button is-rounded has-background-link-dark"%>
+  </div>
+ <div class="action">
+  <%= button_to "Delete User", user_path(current_user), method: "delete",  data: {confirm: "Are you sure?"}, class: "button is-rounded has-background-danger-dark" %>
+  </div>
+  <div class="action">
+  <%= button_to "Back to Search", '/', method: 'get', class: "button is-rounded has-background-success-dark" %>
+  </div>
 
 
+</div>
+</div>
+</div>
+</div>

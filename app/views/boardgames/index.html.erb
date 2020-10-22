@@ -1,7 +1,16 @@
-<h1 class="title">Welcome to your Social Boardgame Experience</h1>
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+      <div class="box is-fullwidth has-background-info-dark has-text-centered">
+        <article class="box">
+          <h1 class="title">Welcome to your Social Boardgame Experience</h1>
+          <p class="subtitle">No this isn't an identity stealing website, we just like games and aren't very good at CSS, yet.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div>
-
+<div class="box">
 <%   if @boardgame %>
       <% @boardgame.each do |b| %>
         <%= link_to b.name, boardgame_path(b) %>
@@ -30,15 +39,15 @@
 
 <div class="columns is-centered mt-6">
   <div class="column is-one-third">
-      <div class="box is-fullwidth">
+      <div class="box is-fullwidth has-background-info-dark">
         <article class="box">
           <%= form_tag boardgames_path, :method => "get" do %>
           <div class="field has-text-centered">
-            <%= label_tag :name, "Search Boardgames", class: "label  has-text-centered"%>
+            <%= label_tag :name, "Search Boardgames", class: "label  has-text-centered has-text-danger-dark"%>
             <%= text_field_tag :name, "", class: "input" %>
             </div>
             <div class="action">
-            <%= submit_tag "Search", name: nil, class: "button is-rounded is-small is-fullwidth" %>
+            <%= submit_tag "Search", name: nil, class: "button is-rounded is-small is-fullwidth has-background-primary-light" %>
           <% end %>
           </div>
         </article>
@@ -46,18 +55,18 @@
         <article class="box">
           <%= form_for @category do |f| %>
           <div class="field  has-text-centered">
-            <%= f.label "Browse by Category", class: "label" %>
+            <%= f.label "Browse by Category", class: "label has-text-danger-dark" %>
             <%= f.collection_select :id, @categories, :id, :name, controls: "dropdown-menu" %>
             </div>
             <div class="action">
-            <%= f.submit 'Browse', name: nil, class: "button is-rounded is-small is-fullwidth" %>
+            <%= f.submit 'Browse', name: nil, class: "button is-rounded is-small is-fullwidth has-background-primary-light" %>
             <% end %>
             </div>
         </article>
       </div>
 
       <div class="action has-text-centered">
-      <%= link_to "Highest User Rated Games", highest_rated_path, class: "button is-rounded" %>
+      <%= link_to "Highest User Rated Games", highest_rated_path, class: "button is-rounded has-background-info-dark has-text-warning" %>
       </div>
 
     </div>
@@ -68,19 +77,19 @@
 <br>
 <div class="box has-background-success-light	">
     <div class="level">
-      <p class="level-item has-text-centered">
+      <p class="level-item has-text-centered has-text-warning has-text-weight-bold">
         Play?
       </p>
-      <p class="level-item has-text-centered">
+      <p class="level-item has-text-centered has-text-danger has-text-weight-bold">
         Cooperative?
       </p>
       <p class="level-item has-text-weight-bold has-text-grey-light is-size-2 has-text-centered ">
         Try These Random Games
       </p>
-      <p class="level-item has-text-centered">
+      <p class="level-item has-text-centered has-text-primary has-text-weight-bold">
         Competative?
       </p>
-      <p class="level-item has-text-centered">
+      <p class="level-item has-text-centered has-text-info has-text-weight-bold">
         Contactless?
       </p>
     </div>
@@ -188,7 +197,7 @@
             <%= link_to (image_tag @boardgames[5].medium_image, alt: "boardgame"), boardgame_path(@boardgames[5]) %>
             <% end %>
             <% if !@boardgames[5].categories.empty? %>
-            <li>Category<% @boardgames[5].categories.each do |e| %>
+            Category<% @boardgames[5].categories.each do |e| %>
                 <% if @boardgames[5].categories.count > 1 %>
                  |
                 <% end %>
@@ -209,4 +218,3 @@
   <div class="action">
     <%= link_to "Submit a Boardgame", new_boardgame_path, class: "input button is-link is-centered" %>
   </div>
-

@@ -1,12 +1,16 @@
+<div class="title ">
 <b>Browse Category: <%= @category.name %></b><br><br>
+</div>
 
 <% if @category.boardgames.count == 0 %>
-    <p>Sorry, currently no games in this category.</p>
-    <%= button_to "Back to Search", '/', method: 'get' %>
-  <% else %>
+    <p class="subtitle is-danger">Sorry, currently no games in this category.</p>
+<div class="action ">
+<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-dark"%>
+</div>  <% else %>
 
-    <%= button_to "Back to Search", '/', method: 'get' %><br><br>
-<!--
+<div class="action ">
+<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-dark"%>
+</div><!--
     <% @category.boardgames.each do |boardgame| %>
 
     <% if boardgame.small_image %>
