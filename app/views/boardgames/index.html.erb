@@ -52,20 +52,53 @@
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
           <p><% if @boardgames[0].small_image %>
+
+            <% if !@boardgames[0].categories.empty? %>
+            <li>Category:<% @boardgames[0].categories.each do |e| %>
+                <% if @boardgames[0].categories.count > 1 %>
+                 |
+                <% end %>
+                <%= link_to e.name, category_path(e) %>
+                <% end %></li>
+                <% end %>
+
             <li><%= link_to (image_tag @boardgames[0].small_image, alt: "boardgame"), boardgame_path(@boardgames[0]) %>
             <% end %></p>
           <p class="title"><%= @boardgames[0].name %></p>
           <p class="subtitle"><%== @boardgames[0].description.first(300) %></p>
         </article>
         <article class="tile is-child notification is-warning">
-          <p class="title">...tiles</p>
-          <p class="subtitle">Bottom tile</p>
-        </article>
+            <p><% if @boardgames[1].small_image %>
+
+            <% if !@boardgames[1].categories.empty? %>
+            <li>Category:<% @boardgames[1].categories.each do |e| %>
+                <% if @boardgames[1].categories.count > 1 %>
+                 |
+                <% end %>
+                <%= link_to e.name, category_path(e) %>
+                <% end %></li>
+                <% end %>
+
+            <li><%= link_to (image_tag @boardgames[1].small_image, alt: "boardgame"), boardgame_path(@boardgames[1]) %>
+            <% end %></p>
+          <p class="title"><%= @boardgames[1].name %></p>
+          <p class="subtitle"><%== @boardgames[1].description.first(300) %></p>        </article>
       </div>
       <div class="tile is-parent">
         <article class="tile is-child notification is-info">
-          <p class="title">Middle tile</p>
-          <p class="subtitle">With an image</p>
+            <% if @boardgames[2].medium_image %>
+            <%= link_to (image_tag @boardgames[2].medium_image, alt: "boardgame"), boardgame_path(@boardgames[2]) %>
+            <% end %>
+            <% if !@boardgames[2].categories.empty? %>
+            <li>Category:<% @boardgames[2].categories.each do |e| %>
+                <% if @boardgames[2].categories.count > 1 %>
+                 |
+                <% end %>
+                <%= link_to e.name, category_path(e) %>
+              <% end %>
+            <% end %>
+          <p class="title"><%= @boardgames[2].name %></p>
+          <p class="subtitle"><%== @boardgames[2].description.first(700) %></p>        </article>
           <figure class="image is-4by3">
             <img src="https://bulma.io/images/placeholders/640x480.png">
           </figure>
@@ -74,9 +107,21 @@
     </div>
     <div class="tile is-parent">
       <article class="tile is-child notification is-danger">
-        <p class="title">Wide tile</p>
-        <p class="subtitle">Aligned with the right tile</p>
-        <div class="content">
+                    <% if @boardgames[3].small_image %>
+                <%= link_to (image_tag @boardgames[3].small_image, alt: "boardgame"), boardgame_path(@boardgames[3]) %>
+              <% end %>
+              <% if !@boardgames[3].categories.empty? %>
+                <li>Category:<% @boardgames[3].categories.each do |e| %>
+                  <% if @boardgames[3].categories.count > 1 %>
+                   |
+                  <% end %>
+                  <%= link_to e.name, category_path(e) %>
+                <% end %>
+              <% end %>
+
+          <p class="title"><%= @boardgames[3].name %></p>
+          <p class="subtitle"><%== @boardgames[3].description.first(300) %></p>        </article>
+            <div class="content">
           <!-- Content -->
         </div>
       </article>
@@ -85,8 +130,20 @@
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">
-        <p class="title">Tall tile</p>
-        <p class="subtitle">With even more content</p>
+          <p class="title"><%= @boardgames[5].name %></p>
+          <p class="subtitle"><%== @boardgames[5].description.first(300) %></p>
+                <% if @boardgames[5].small_image %>
+                <%= link_to (image_tag @boardgames[5].small_image, alt: "boardgame"), boardgame_path(@boardgames[5]) %>
+              <% end %>
+              <% if !@boardgames[5].categories.empty? %>
+                <li>Category:<% @boardgames[5].categories.each do |e| %>
+                  <% if @boardgames[5].categories.count > 1 %>
+                   |
+                  <% end %>
+                  <%= link_to e.name, category_path(e) %>
+                <% end %>
+              <% end %>
+
         <div class="content">
           <!-- Content -->
         </div>
