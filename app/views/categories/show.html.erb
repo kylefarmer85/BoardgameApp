@@ -6,7 +6,7 @@
   <% else %>
 
     <%= button_to "Back to Search", '/', method: 'get' %><br><br>
-
+<!--
     <% @category.boardgames.each do |boardgame| %>
 
     <% if boardgame.small_image %>
@@ -18,4 +18,23 @@
 
   <% end %>
 <% end %>
+-->
 
+
+  <div class="grid">
+    <% @category.boardgames.each do |boardgame| %>
+      <div class="square">
+        <div class="content">
+          <div class="table">
+            <div class="table-cell">
+              <% if boardgame.small_image %>
+                  <p><%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame) %><br>
+                <% end %><br>
+              <%= link_to boardgame.name, boardgame_path(boardgame) %><br>
+              Players: <%= boardgame.min_players %> - <%= boardgame.max_players %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
