@@ -34,16 +34,4 @@ class Boardgame < ApplicationRecord
     end
     end
 
-    def self.highest_rated
-        games_hash = {}
-        all.each do |game|
-            if game.user_reviews.count > 0
-                games_hash[game] = game.avg_rating
-            end          
-        end
-        array = games_hash.sort_by {|k,v| -v}.to_h
-    end
-
-
-
 end

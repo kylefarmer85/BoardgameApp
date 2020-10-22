@@ -1,5 +1,5 @@
 class BoardgamesController < ApplicationController
-    skip_before_action :require_login, only: [:home, :show, :index, :create]
+    skip_before_action :require_login, only: [:home, :show, :index, :create, :highest_rated]
     # validates :name, :description, :min_players, :max_players, :year_published, :publisher, presence: :true
     # validates :description, length: {minimum: 100}
     # validates :min_players, length: {minimum: 1}
@@ -26,10 +26,6 @@ class BoardgamesController < ApplicationController
         category = Category.create_or_find_by(params[:category_ids])
         BoardgameCategory.create(:boardgame_id => boardgame.id, category_id: category.id )
         redirect_to boardgame_path(boardgame)
-    end
-
-    def highest_rated
-        @highest_rated_games = Boardgame.highest_rated
     end
 
     private

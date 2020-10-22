@@ -29,5 +29,8 @@ class UserReviewsController < ApplicationController
     redirect_to boardgame_path(review.boardgame_id)
   end
 
+  def highest_rated
+    @highest_rated_games = UserReview.highest_rated
+  end
 
 end
