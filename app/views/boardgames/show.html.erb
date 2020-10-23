@@ -1,5 +1,5 @@
 <div class="action is-right-aligned">
-<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-dark"%>
+<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
 </div>
 <br>
 <br>
@@ -45,7 +45,7 @@
 <% end %>
 
 <% if !current_user %>
-      <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get"%>
+      <%= button_to "Log in to submit a review or add game to collection", login_path, method: "get", class:  "button has-background-primary-light"%>
     <% end %>
 
 <div class="columns is-left mt-6">

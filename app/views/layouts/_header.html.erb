@@ -21,10 +21,6 @@
   <p><b>Hello, <%= current_user.first_name %></b></p>
 <% end %>
 </div>
-</div>
 
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error| %>
-   <p style="color: red"><%= error %></p>
-  <% end %>
-<% end %>
+
+

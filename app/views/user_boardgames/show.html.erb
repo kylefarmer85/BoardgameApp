@@ -14,38 +14,6 @@
   </div>
 </div>
 
-<!--
-<ol>
-<% current_user.boardgames.each do |boardgame| %>
-  <% if boardgame.small_image %>
-    <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%>
-  <% end %>
-  <li><%= link_to boardgame.name, boardgame_path(boardgame) %></li>
-  <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %><br>
-<% end %>
-</ol>
--->
-
-
-<!--
-  <div class="columns is-centered is-vcentered is-4 is-variable">
-    <% current_user.boardgames.each do |boardgame| %>
-
-    <div class="column is-4">
-      <div class="box has-text-centered">
-        <% if boardgame.small_image %>
-          <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%>
-        <% end %>
-        <p class="subtitle"><b><%= link_to boardgame.name, boardgame_path(boardgame) %></b>
-        </p>
-        <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %><br>
-      </div>
-    </div>
-
-    <% end %>
-  </div>
--->
-
   <div class="grid">
     <% current_user.boardgames.each do |boardgame| %>
       <div class="square">
@@ -64,19 +32,3 @@
     <% end %>
   </div>
 
-
-
-<!--
-  <div class="is-flex-direction-row">
-    <% current_user.boardgames.each do |boardgame| %>
-      <div class="box">
-        <% if boardgame.small_image %>
-          <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%>
-        <% end %>
-        <p class="subtitle"><b><%= link_to boardgame.name, boardgame_path(boardgame) %></b>
-        </p>
-        <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %><br>
-      </div>
-    <% end %>
-  </div>
--->

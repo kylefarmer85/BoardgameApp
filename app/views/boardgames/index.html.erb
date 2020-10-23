@@ -21,7 +21,7 @@
         <% end %>
 
         <% if !b.categories.empty? %>
-          Category:<% b.categories.each do |e| %>
+          <b>Category:</b><% b.categories.each do |e| %>
             <% if b.categories.count > 1 %>
               |
             <% end %>
@@ -175,7 +175,7 @@
             <% end %>
 
             <% if !@boardgames[4].categories.empty? %>
-            <p>Category<% @boardgames[4].categories.each do |e| %>
+            <p><li>Category<% @boardgames[4].categories.each do |e| %>
                 <% if @boardgames[4].categories.count > 1 %>
                  |
                 <% end %>
@@ -200,7 +200,7 @@
             <%= link_to (image_tag @boardgames[5].medium_image, alt: "boardgame"), boardgame_path(@boardgames[5]) %>
             <% end %>
             <% if !@boardgames[5].categories.empty? %>
-            Category<% @boardgames[5].categories.each do |e| %>
+            <li>Category<% @boardgames[5].categories.each do |e| %>
                 <% if @boardgames[5].categories.count > 1 %>
                  |
                 <% end %>
