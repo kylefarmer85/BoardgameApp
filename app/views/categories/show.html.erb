@@ -22,6 +22,7 @@
 <div class="action ">
 <br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
 </div>
+ <% end %>
 
   <div class="grid">
     <% @category.boardgames.each do |boardgame| %>
@@ -40,20 +41,12 @@
       </div>
     <% end %>
   </div>
-  <br>
+
+ <% if @category.boardgames.count > 10 %>
+  <% 200.times do %> 
+<%== "<br>" %>
 <% end %>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<% end %>
+
+

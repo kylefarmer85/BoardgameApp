@@ -7,10 +7,12 @@ class UserBoardgamesController < ApplicationController
 
     def create
         @user_boardgame = UserBoardgame.create(user_id: current_user.id, boardgame_id: params[:boardgame_id])
-        flash[:errors] = @user_boardgame.errors.full_messages
-        redirect_to user_boardgame_path(current_user)
-
-
+        if @user_boardgame.save
+            redirect_to user_boardgame_path(current_user)
+        else
+            flash[:errors] = @user_boardgame.errors.full_messages
+            redirect_to user_boardgame_path(current_user)
+        end
     end
 
     def add_to_wishlist

@@ -26,11 +26,14 @@ class BoardgamesController < ApplicationController
 
     def create
         boardgame = Boardgame.create(boardgame_params)
-
         category = Category.find(params[:boardgame][:id])
-
-        BoardgameCategory.create(:boardgame_id => boardgame.id, category_id: category.id )
-        redirect_to boardgame_path(boardgame)
+        BoardgameCategory.create(:boardgame_id => boardgame.id, category_id: category.id)
+        if  boardgame.save
+            redirect_to boardgame_path(boardgame)
+        else 
+            flash[:errors] = boardgame.errors.full_messages
+            redirect_to "/"
+        end
     end
 
     private

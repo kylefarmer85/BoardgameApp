@@ -5,6 +5,8 @@ class Boardgame < ApplicationRecord
   has_many :user_boardgames
   has_many :users, through: :user_boardgames
 
+  validates :name, :description, :min_players, :max_players, :year_published, :publisher, presence: :true
+
   def self.search(search)
     if search
       boardgame = Boardgame.find_by(name: search.titlecase)
