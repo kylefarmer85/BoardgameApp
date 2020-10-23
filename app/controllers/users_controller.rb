@@ -35,8 +35,9 @@ class UsersController < ApplicationController
 
 
     def destroy
+        session[:user_id] = nil
         @user.destroy
-        redirect_to new_user_path, notice: "Employee Deleted!"
+        redirect_to new_user_path
     end
 
     private
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     end
         
     def set_user
-        @user = User.find(params[:id])
+        @user = User.find(session[:user_id])
     end
 
 end

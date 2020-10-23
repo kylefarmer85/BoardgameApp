@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :user_reviews
-    has_many :user_boardgames
+    has_many :user_reviews, dependent: :destroy
+    has_many :user_boardgames, dependent: :destroy
     has_many :boardgames, through: :user_boardgames
 
     validates :username, presence: true, uniqueness: true

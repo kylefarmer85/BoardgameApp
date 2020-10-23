@@ -15,7 +15,7 @@
  */
 
  body {
-  background-image: url(https://www.freeiconspng.com/uploads/white-dice-png-2.png);
+  background-image: url("https://www.freeiconspng.com/uploads/white-dice-png-2.png");
   opacity: 1;
 }
 
@@ -48,6 +48,11 @@ div.nav-bar ul {
   position: top;
   top: 0;
   width: 100%;
+}
+
+div.nav-bar p {
+  float: right;
+
 }
 
 div.image  {
@@ -121,5 +126,19 @@ div.grid {
   margin-left: auto;
   margin-right: auto;
   padding: 1%;
+  background-color: white; 
 }
 
+.highest-rated-box {
+  text-align: center;
+  height: 40%; 
+  width: 50%;
+  border: 7px solid;
+  border-color: #2571a8;
+  box-shadow: 5px 10px 18px #111111;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3%;
+  background-color: white; 
+}
