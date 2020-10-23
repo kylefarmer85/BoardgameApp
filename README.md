@@ -1,24 +1,22 @@
-# README
+Welcome to Boardgame Social!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create a profile and start building your own collection of your favorite games and ones you want to own!
 
-Things you may want to cover:
+- Search over 12,000 boardgames or browse game collections by category
+- Log in to leave reviews and ratings on the games you hate or love
+- See a list of highest user rated boardgames
+- Submit your own boardgame to the community
+- "Like" other user's reviews
+- Radom boardgame suggestions made to you on the home page
+- Suggestions made to you of categories you might be interested in based on your current collection
+- User reviews are ordered by "likes" from the community
 
-* Ruby version
+* written in Ruby v2.6.1
+* utilizes bcrypt v3.1.7 (so your data is SAFE!)
+* database sqlite3 v1.4
 
-* System dependencies
+Created by John Lovitsch and Kyle Farmer in 2020
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
