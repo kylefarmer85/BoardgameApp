@@ -6,7 +6,7 @@ def api_response(url, key)
 end
 
 def find_or_create_boardgame_from_first_letter(letter)
-    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[#{letter}]&limit=10&pretty=true&client_id=28dZcLNq5b/json", "games")
+    boardgame_array = api_response("https://www.boardgameatlas.com/api/search?name=[#{letter}]&limit=500&pretty=true&client_id=28dZcLNq5b/json", "games")
     # creates array of hashes of game data from API
     if boardgame_array
         # skips letters without boardgame
