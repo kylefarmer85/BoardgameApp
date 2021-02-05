@@ -1,17 +1,15 @@
-
 <!-- Main container -->
 <div class="box has-background-info-dark">
   <nav class="level">
     <!-- Left side -->
     <div class="level-left">
       <div class="level-item">
-
-          <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/board-game-4-631676.png", alt="icon", class="image is-64x64">
-          <p class="title has-text-white">
-            <strong>
-             BoardgameSocial
-            </strong>
-          </p>
+        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/board-game-4-631676.png", alt="icon", class="image is-64x64">
+        <p class="title has-text-white">
+        <strong>
+          BoardgameSocial
+        </strong>
+        </p>
       </div>
     </div>
 
@@ -25,28 +23,29 @@
         </strong>
       </p>
       <p class="level-item">
-          <a>
-            <% if current_user %>
-            <strong>
-              <%= link_to "Collection",  user_boardgame_path(current_user), class: "has-text-white" %>
-            <% end %>
-            </strong>
-          </a>
-        </p>
-      <p class="level-item">
-          <a>
+        <a>
+          <% if current_user %>
           <strong>
-            <%= link_to "Home", '/', class: "has-text-white"  %>
-          </strong>
-          </a>
-        </p>
-      <p class="level-item"><a class="action">
-          <% if !current_user %>
-            <%= link_to "Login", login_path, class: "button"%>
-          <% else %>
-            <%= link_to "Logout", logout_path, method: "delete", class: "button is-warning" %>
+            <%= link_to "Collection",  user_boardgame_path(current_user), class: "has-text-white" %>
           <% end %>
-      </a>
+          </strong>
+        </a>
+      </p>
+      <p class="level-item">
+        <a>
+        <strong>
+          <%= link_to "Home", '/', class: "has-text-white"  %>
+        </strong>
+        </a>
+      </p>
+      <p class="level-item"><a class="action">
+        <a>
+        <% if !current_user %>
+          <%= link_to "Login", login_path, class: "button"%>
+        <% else %>
+          <%= link_to "Logout", logout_path, method: "delete", class: "button is-warning" %>
+        <% end %>
+        </a>
       </p>
     </div>
   </nav>

@@ -14,52 +14,20 @@
   </div>
 </div>
 
-  <div class="grid">
-    <% current_user.boardgames.each do |boardgame| %>
-      <div class="square">
-        <div class="custom-box">
-          <div class="table">
-            <div class="table-cell">
-              <% if boardgame.small_image %>
-                <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%>
-              <% end %><br>
-              <b><%= link_to boardgame.name, boardgame_path(boardgame) %></b><br><br>
-               <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %>
-            </div>
+<div class="grid">
+  <% current_user.boardgames.each do |boardgame| %>
+    <div class="square">
+      <div class="custom-box">
+        <div class="table">
+          <div class="table-cell">
+            <% if boardgame.small_image %>
+              <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame)%>
+            <% end %><br>
+            <b><%= link_to boardgame.name, boardgame_path(boardgame) %></b><br><br>
+              <%= button_to "Remove", user_boardgame_path(boardgame), method: "delete" %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+    </div>
+  <% end %>
+</div>

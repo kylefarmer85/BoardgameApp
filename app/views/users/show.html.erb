@@ -1,56 +1,55 @@
 <div class="columns is-centered mt-6">
   <div class="column is-half">
-      <div class="box is-fullwidth has-background-info-dark">
-        <article class="box">
-
-          <h1 class="subtitle has-text-centered has-text-weight-bold is-size-2"><%= current_user.full_name %>'s Profile</h1><br>
-          <p>Username: <%= current_user.username%><br>
-            Email: <%= current_user.email%>
-          </p>
-          <br>
-          <br>
-          <br>
-          <nav class="level">
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Your Boardgame</p>
-                <p class="title button"><%= link_to "Collection", user_boardgame_path(current_user) %></p>
-              </div>
+    <div class="box is-fullwidth has-background-info-dark">
+      <article class="box">
+        <h1 class="subtitle has-text-centered has-text-weight-bold is-size-2"><%= current_user.full_name %>'s Profile</h1>
+        <br>
+        <p>Username: <%= current_user.username%>
+        <br>
+          Email: <%= current_user.email%>
+        </p>
+        <br>
+        <br>
+        <br>
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Your Boardgame</p>
+              <p class="title button"><%= link_to "Collection", user_boardgame_path(current_user) %></p>
             </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Your</p>
-                <p class="title button"><%= link_to "Reviews", user_review_path(current_user) %></p>
-
-              </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Your</p>
+              <p class="title button"><%= link_to "Reviews", user_review_path(current_user) %></p>
             </div>
-          </nav>
-          <br>
-          <div class="box has-background-link">
+          </div>
+        </nav>
+        <br>
+        <div class="box has-background-link">
           <div class="box has-text-centered">
-          <h4 class="subtitle has-text-primary-dark">Checkout More Games in Categories You Like!</h4>
-          <% current_user.boardgames.each do |c| %>
-            <% c.categories.each do |u| %>
-            <div class="button is-rounded has-background-success-light"><%= link_to u.name, category_path(u) %> </div>
-            <br>
+            <h4 class="subtitle has-text-primary-dark">Checkout More Games in Categories You Like!</h4>
+            <% current_user.boardgames.each do |c| %>
+              <% c.categories.each do |u| %>
+                <div class="button is-rounded has-background-success-light">
+                  <%= link_to u.name, category_path(u) %>
+                </div>
+                <br>
+              <% end %>
             <% end %>
-          <% end %>
           </div>
-          </div>
-
-          <br>
-            <div class="action">
+        </div>
+        <br>
+        <div class="action">
           <%= button_to "Edit User", edit_user_path(current_user), method: "get", class: "button is-rounded has-background-link-dark has-text-white"%>
-            </div>
-          <div class="action">
-            <%= button_to "Delete User", user_path(current_user), method: "delete",  data: {confirm: "Are you sure?"}, class: "button is-rounded has-background-danger-dark has-text-white" %>
-            </div>
-            <div class="action">
-            <%= button_to "Back to Search", '/', method: 'get', class: "button is-rounded has-background-success-dark has-text-white" %>
-            </div>
-
-
-</div>
-</div>
-</div>
+        </div>
+        <div class="action">
+          <%= button_to "Delete User", user_path(current_user), method: "delete",  data: {confirm: "Are you sure?"}, class: "button is-rounded has-background-danger-dark has-text-white" %>
+        </div>
+        <div class="action">
+          <%= button_to "Back to Search", '/', method: 'get', class: "button is-rounded has-background-success-dark has-text-white" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

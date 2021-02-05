@@ -3,7 +3,9 @@
       <div class="box is-fullwidth has-background-info-dark">
         <article class="box">
           <div class="title has-text-centered">
-           <b>Browse Category: <br> <%= @category.name %></b><br><br>
+           <b>Browse Category: <br> <%= @category.name %></b>
+           <br>
+           <br>
           </div>
         </div>
       </div>
@@ -11,42 +13,39 @@
   </div>
 </div>
 
-
-
 <% if @category.boardgames.count == 0 %>
-    <p class="subtitle is-danger">Sorry, currently no games in this category.</p>
-<div class="action">
-<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
-</div>  <% else %>
+  <p class="subtitle is-danger">Sorry, currently no games in this category.</p>
+  <div class="action">
+    <br>
+    <%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
+  </div>
 
-<div class="action ">
-<br><%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
-</div>
- <% end %>
+  <% else %>
 
-  <div class="grid">
-    <% @category.boardgames.each do |boardgame| %>
-      <div class="square">
-        <div class="custom-box">
-          <div class="table">
-            <div class="table-cell">
-              <% if boardgame.small_image %>
-                  <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame) %><br>
-                <% end %>
-              <%= link_to boardgame.name, boardgame_path(boardgame) %><br>
-              Players: <%= boardgame.min_players %> - <%= boardgame.max_players %>
-            </div>
+  <div class="action ">
+    <br>
+    <%= button_to "Back to Search", '/', method: 'get', class:  "button has-background-primary-light"%>
+  </div>
+<% end %>
+
+<div class="grid">
+  <% @category.boardgames.each do |boardgame| %>
+    <div class="square">
+      <div class="custom-box">
+        <div class="table">
+          <div class="table-cell">
+            <% if boardgame.small_image %>
+              <%= link_to (image_tag boardgame.small_image, alt: "boardgame"), boardgame_path(boardgame) %>
+              <br>
+            <% end %>
+            <%= link_to boardgame.name, boardgame_path(boardgame) %>
+            <br>
+            Players: <%= boardgame.min_players %> - <%= boardgame.max_players %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
-
- <% if @category.boardgames.count > 10 %>
-  <% 200.times do %> 
-<%== "<br>" %>
-<% end %>
-
-<% end %>
+    </div>
+  <% end %>
+</div>
 
 

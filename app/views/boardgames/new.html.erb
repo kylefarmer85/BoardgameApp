@@ -1,62 +1,66 @@
-
 <div class="columns is-centered mt-2">
-    <div class="column is-half">
+  <div class="column is-half">
     <div class="box has-background-info-dark">
-    <div class="box">
-<h1 class="is-size-2 has-text-weight-bold has-text-centered mb-3">Share your original boardgame</h1>
-</div>
-</div>
-</div>
+      <div class="box">
+        <h1 class="is-size-2 has-text-weight-bold has-text-centered mb-3">Share your original boardgame</h1>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="back_img">
   <div class="columns is-centered mt-2">
     <div class="column is-one-third">
-        <div class="box has-background-info-dark">
+      <div class="box has-background-info-dark">
+        <div class="box">
+            <%= form_for @boardgame do |f| %>
+              <div class="field">
+                <%= f.label :name, class: "label" %>
+                <%= f.text_field :name, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label :description, class: "label" %>
+                <%= f.text_area :description, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label "Minimum Players", class: "label" %>
+                <%= f.number_field :min_players, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label "Maximum Players", class: "label" %>
+                <%= f.number_field :max_players, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label :year_published, class: "label" %>
+                <%= f.number_field :year_published, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label :image_url, class: "label" %>
+                <%= f.text_field :image_url, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label "Game Inventor", class: "label" %>
+                <%= f.text_field :publisher, class: "input" %>
+                <br>
+              </div>
+              <div class="field">
+                <%= f.label 'Category', class: "label" %>
+                <%= f.collection_select :id, @categories, :id, :name %>
+              <br>
+              </div>
 
-      <div class="box">
-          <%= form_for @boardgame do |f| %>
-            <div class="field">
-            <%= f.label :name, class: "label" %>
-            <%= f.text_field :name, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label :description, class: "label" %>
-            <%= f.text_area :description, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label "Minimum Players", class: "label" %>
-            <%= f.number_field :min_players, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label "Maximum Players", class: "label" %>
-            <%= f.number_field :max_players, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label :year_published, class: "label" %>
-            <%= f.number_field :year_published, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label :image_url, class: "label" %>
-            <%= f.text_field :image_url, class: "input" %>
-            <br></div>
-            <div class="field">
-            <%= f.label "Game Inventor", class: "label" %>
-            <%= f.text_field :publisher, class: "input" %>
-
-            <br></div>
-            <div class="field">
-            <%= f.label 'Category', class: "label" %>
-            <%= f.collection_select :id, @categories, :id, :name %>
-            <br></div>
-
-            <div class="actions">
-            <%= f.submit class: "button is-success is-rounded"%>
-            </div>
-          <% end %>
-
+              <div class="actions">
+                <%= f.submit class: "button is-success is-rounded"%>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>

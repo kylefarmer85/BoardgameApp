@@ -10,14 +10,14 @@
 </div>
 
 <% @highest_rated_games.each do |game, rating| %>
-<div class="highest-rated-box">
-  <% if game.medium_image %>
-    <%= link_to (image_tag game.medium_image, alt: "boardgame"), boardgame_path(game) %>
-  <% end %><br>
-  <div class="game-name">
-    <%= link_to game.name, boardgame_path(game) %><br>
-    Average User Rating: <b><%= rating %></b><br><br><br>
+  <div class="highest-rated-box">
+    <% if game.medium_image %>
+      <%= link_to (image_tag game.medium_image, alt: "boardgame"), boardgame_path(game) %>
+    <% end %><br>
+    <div class="game-name">
+      <%= link_to game.name, boardgame_path(game) %><br>
+      Average User Rating: <b><%= rating %></b><br><br><br>
     </div>
-    </div>
- <% end %>
+  </div>
+<% end %>
 

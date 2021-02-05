@@ -10,25 +10,24 @@
     </div>
   </div>
 </div>
-  <div class="columns is-centered mt-2">
-    <div class="column is-half">
-        <div class="box has-background-info-dark">
-          <div class="box">
-<% current_user.user_reviews.each do |ur| %>
-<article class="message is-info">
-  <div class="message-header">
-    <%= link_to ur.boardgame.name, boardgame_path(ur.boardgame), class: "subtitle"%>
+<div class="columns is-centered mt-2">
+  <div class="column is-half">
+    <div class="box has-background-info-dark">
+      <div class="box">
+        <% current_user.user_reviews.each do |ur| %>
+          <article class="message is-info">
+            <div class="message-header">
+             <%= link_to ur.boardgame.name, boardgame_path(ur.boardgame), class: "subtitle"%>
+            </div>
+            <div class="message-body">
+              <%= ur.rating %>
+              <br>
+              <%= ur.review %>
+            </div>
+            <%= button_to "Delete Review", user_review_path(ur), method: "delete",  data: {confirm: "Are you sure?"}, class: "button is rounded has-background-danger has-text-white is-small is-rounded" %><br>
+          </article>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="message-body">
-    <%= ur.rating %>
-    <br>
-    <%= ur.review %>
-  </div>
-  <%= button_to "Delete Review", user_review_path(ur), method: "delete",  data: {confirm: "Are you sure?"}, class: "button is rounded has-background-danger has-text-white is-small is-rounded" %><br>
-</article>
-<% end %>
-</div>
-</div>
-</div>
-
 </div>
